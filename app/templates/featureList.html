@@ -1,0 +1,11 @@
+<div class="row">
+  <table class="table table-striped">
+    <tr  ng-repeat="feature in featureStore.features" ng-click="deleteFeature(feature)">
+      <td> {{ feature.id() }} </td>
+	  <td> {{ feature.data('name') }} </td>
+      <td> {{ feature.status() }} </td>
+      <td> {{ feature.timestamp() | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+      <td><button class="delete" ng:click="deleteFeature(feature)">Delete</button></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,25 @@
+<div class="form-left-col">
+    <label>Id:</label>
+    <input type="text" name="id" value="{{ user.id }}" disabled />
+
+    <label>Name:</label>
+    <input type="text" name="user.name" value="{{ user.data('name') }}" required/>
+
+    <label>Status:</label>
+    <input type="text" name="user.status" value="{{ user.status() }}"/>
+
+    <label>Created:</label>
+    <input type="text" name="user.created" value="{{ user.timestamp() }}"/>
+
+    <label>Deltas:</label>
+    <input type="text" name="user.deltas" value="{{ user.deltas().length() }}"/>
+
+    <button class="save" ng:click="saveUser()">Save</button>
+    <button class="delete" ng:click="deleteUser()">Delete</button>
+</div>
+
+<!-- <div class="form-right-col">
+    <img width="250" height="300" src="pics/{{ wine.picture }}" onerror="this.src='pics/generic.jpg'"/>
+    <label>Notes:</label>
+    <textarea name="wine.description">{{ wine.description }}</textarea>
+</div> -->

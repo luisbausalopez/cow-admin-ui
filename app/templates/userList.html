@@ -1,0 +1,11 @@
+<div class="row">
+  <table class="table table-striped">
+    <tr  ng-repeat="user in users" ng-click="setUser(user)">
+      <td> {{ user.id() }} </td>
+	  <td> {{ user.data('name') }} </td>
+      <td> {{ user.status() }} </td>
+      <td> {{ user.timestamp() | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+      <td><button class="delete" ng:click="deleteUser(user)">Delete</button></td>
+    </tr>
+  </table>
+</div>

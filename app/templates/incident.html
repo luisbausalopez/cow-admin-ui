@@ -1,0 +1,28 @@
+<div class="form-left-col">
+    <label>Id:</label>
+    <input type="text" name="project.id" value="{{ currentProject.id() }}" disabled />
+
+    <label>Name:</label>
+    <input type="text" name="project.name" value="{{ currentProject.data('name') }}" required/>
+
+    <label>Status:</label>
+    <input type="text" name="project.status" value="{{ currentProject.status() }}"/>
+
+    <label>Created:</label>
+    <input type="text" name="project.created" value="{{ currentProject.timestamp() }}"/>
+
+    <label>Deltas:</label>
+    <input type="text" name="project.deltas" value="{{ currentProject.deltas().length() }}"/>
+	
+	<label>Description:</label>
+    <textarea name="project.description">{{ currentProject.description() }}</textarea>
+
+    <button class="save" ng:click="saveProject()">Save</button>
+    <button class="delete" ng:click="deleteProject(currentProject.id())">Delete</button>
+</div>
+
+<!-- <div class="form-right-col">
+    <img width="250" height="300" src="pics/{{ wine.picture }}" onerror="this.src='pics/generic.jpg'"/>
+    <label>Notes:</label>
+    <textarea name="wine.description">{{ wine.description }}</textarea>
+</div> -->
