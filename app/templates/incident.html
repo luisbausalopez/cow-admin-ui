@@ -26,27 +26,31 @@
 
 </div>
 <div class="form-right-col">
-	<div class="row padded">
-		<div class="row">
-			GROUPS
-		  <table class="table table-striped">
-			<tr ng-repeat="group in groups" 
-				ui-sref='groups.group({groupID:group.id()})'>
-			  <td> {{ group.id() || group.data('name') }} </td>
-			</tr>
-		  </table>
-		</div>
+	<div class="list-group">
+		GROUPS
+	  <table class="table table-striped">
+		<tr  ng-repeat="group in groups" ui-sref='groups.group({groupID:group.id()})'>
+		  <td ui-sref-active="active"> {{ group.id() }} </td>
+		  <td> {{ group.data('name') }} </td>
+		  <td> {{ group.status() }} </td>
+		  <td> {{ group.timestamp() | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+		  <td><button class="delete" ng-click="deleteGroup(group)">Delete</button></td>
+		</tr>
+		<p ui-sref='groups.group({groupID:"new"})'>New Group</p>
+	  </table>
 	</div>
-	<div class="row padded">
-		<div class="row">
-			ITEMS
-		  <table class="table table-striped">
-			<tr ng-repeat="item in items" 
-				ui-sref='items.item({itemID:item.id()})'>
-			  <td> {{ item.id() || item.data('name') }} </td>
-			</tr>
-		  </table>
-		</div>
+	<div class="list-group">
+		ITEMS  
+	  <table class="table table-striped">
+		<tr  ng-repeat="item in items" ui-sref='incidents.incident({incidentID:project.id()})'>
+		  <td ui-sref-active="active"> {{ item.id() }} </td>
+		  <td> {{ item.data('name') }} </td>
+		  <td> {{ item.status() }} </td>
+		  <td> {{ item.timestamp() | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+		  <td><button class="delete" ng-click="deleteItem(item.id())">Delete</button></td>
+		</tr>
+		<p ui-sref='items.item({itemID:"new"})'>New Item</p>
+	  </table>
 	</div>
 
 </div>
