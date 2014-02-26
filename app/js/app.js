@@ -20,40 +20,39 @@ supercow.config([
   '$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider
-	  // .when("/incidents","/incidents/")
 	  .otherwise("/");
       
     $stateProvider
+
+////////////////
+//   Login    //
+////////////////
 	  .state("login", {
 		url: "/",
         views: {
-          'all': {
+          'main@': {
             templateUrl: "templates/login.html"
           }
         },
         controller: "LoginCtrl"
       })
 
-          ////////////////
-          // Incidents  //
-          ////////////////
-
+////////////////
+// Incidents  //
+////////////////
       .state('incidents', {
-          url: "/incidents/",
+          url: "/incidents",
             views: {
               'main@': {
                 templateUrl: "templates/incidentList.html",
-                // zorg dat de scope, state en de incidenten door worden gegeven aan de
-                // controller
                 controller: 'IncidentsCtrl'
                 }
             }
         })
 
-          ///////////////////////////
-          // Incidents > Incident //
-          ///////////////////////////
-        
+///////////////////////////
+// Incidents > Incident  //
+///////////////////////////
         .state('incidents.incident', {
             // With abstract set to true, that means this state can not be explicitly activated.
             // It can only be implicitly activated by activating one of it's children.
@@ -62,19 +61,38 @@ supercow.config([
             views: {
               'main@': {
                 templateUrl: "templates/incident.html",
-                // zorg dat de scope, state en de incidenten door worden gegeven aan de
-                // controller
                 controller: 'IncidentCtrl'
-                }
+              },
+              'sidebar@': {
+                templateUrl: "templates/sidebar/incidents.html",
+                controller: 'IncidentSidebarCtrl'
+              }
             }
         })
 
-          ////////////////
-          //    Features   //
-          ////////////////
+///////////////////////////////////
+// Incidents > Incident > Groups //
+///////////////////////////////////
+/*        .state('incidents.incident.groups', {
+            url: "/group",
+            views: {
 
+              // So this one is targeting the unnamed view within the parent state's template.
+              'main@': {
+                templateUrl: "templates/beeld.html",
+                controller: 'BeeldCtrl'
+                },
+               'sidebar@': {
+                templateUrl: "templates/sidebar/beeld.html"
+                }
+            }
+        })*/
+
+////////////////
+//  Features  //
+////////////////
         .state('features', {
-          url: "/features/",
+          url: "/features",
             views: {
               'main@': {
                 templateUrl: "templates/featureList.html",
@@ -83,12 +101,11 @@ supercow.config([
             }
         })
 
-          ////////////////
-          //    Users   //
-          ////////////////
-
+////////////////
+//    Users   //
+////////////////
         .state('users', {
-          url: "/users/",
+          url: "/users",
             views: {
               'main@': {
                 templateUrl: "templates/userList.html",
@@ -97,10 +114,9 @@ supercow.config([
             }
         })
 
-          //////////////////////
-          //    Users > User  //
-          //////////////////////
-
+//////////////////////
+//    Users > User  //
+//////////////////////
         .state('users.user', {
             // With abstract set to true, that means this state can not be explicitly activated.
             // It can only be implicitly activated by activating one of it's children.
@@ -108,12 +124,11 @@ supercow.config([
             url: '/:userID'
         })
 
-          ////////////////
-          //    Peers   //
-          ////////////////
-
+////////////////
+//    Peers   //
+////////////////
         .state('peers', {
-          url: "/peers/",
+          url: "/peers",
             views: {
               'main@': {
                 templateUrl: "templates/peerList.html",
@@ -122,10 +137,9 @@ supercow.config([
             }
         })
 
-          //////////////////////
-          //    Peers > Peer  //
-          //////////////////////
-
+//////////////////////
+//    Peers > Peer  //
+//////////////////////
         .state('peers.peer', {
             // With abstract set to true, that means this state can not be explicitly activated.
             // It can only be implicitly activated by activating one of it's children.
@@ -138,8 +152,8 @@ supercow.config([
           //////////////////////
         
 
-        .state('incidents.incident.beeld', {
-            url: "/:beeldType/",
+/*         .state('incidents.incident.beeld', {
+            url: "/:beeldType",
             views: {
 
               // So this one is targeting the unnamed view within the parent state's template.
@@ -151,14 +165,14 @@ supercow.config([
                 templateUrl: "templates/sidebar/beeld.html"
                 }
             }
-        })
+        }) */
 
           ///////////////////
           // Beeld > Kaart //
           ///////////////////
         
 
-        .state('incidents.incident.beeld.kaart', {
+        /* .state('incidents.incident.beeld.kaart', {
             url: "/kaart",
             views: {
 
@@ -170,14 +184,14 @@ supercow.config([
                 templateUrl: "templates/sidebar/kaart.html"
                 }
             }
-        })
+        }) */
 
           ///////////////////
           // Beeld > Text //
           ///////////////////
         
 
-        .state('incidents.incident.beeld.text', {
+        /* .state('incidents.incident.beeld.text', {
             url: "/text",
             views: {
 
@@ -189,27 +203,6 @@ supercow.config([
                 templateUrl: "templates/sidebar/text.html"
                 }
             }
-        });       
+        }); */
     }]);
 
-
-// Declare app level module which depends on filters, and services
-/*
-var supercow = angular.module('superCOW', [
-  'ngRoute',
-  'superCOW.filters',
-  'superCOW.services',
-  'superCOW.directives',
-  'superCOW.controllers'
-]);
-
-supercow.config(['$routeProvider', function($routeProvider) {
-
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  
-  $routeProvider.when('/incidents', {templateUrl: 'partials/incidentList.html', controller: 'IncidentsCtrl'});
-  
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
-*/

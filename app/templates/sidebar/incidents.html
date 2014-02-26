@@ -1,0 +1,8 @@
+<div class="list-group">
+  <table class="table table-striped">
+	<tr ng-repeat="project in projects" 
+		ui-sref='incidents.incident({incidentID:project.id()})'>
+	  <td ui-sref-active="active"> {{ project.id() || project.data('name') }} </td>
+	</tr>
+  </table>
+</div>

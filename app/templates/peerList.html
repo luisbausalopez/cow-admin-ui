@@ -1,6 +1,6 @@
 <div class="row">
   <table class="table table-striped">
-    <tr  ng-repeat="peer in peerStore.peers" ng-click="changePeerStatus(peer)">
+    <tr  ng-repeat="peer in peers" ng-click="changePeerStatus(peer)">
       <td> {{ peer.id() }} </td>
 	  <td> {{ peer.data('family') }} </td>
 	  <td> {{ peer.status() }} </td>

@@ -1,28 +1,53 @@
 <div class="form-left-col">
+
     <label>Id:</label>
-    <input type="text" name="project.id" value="{{ currentProject.id() }}" disabled />
+    <input type="text" name="newProject.id" ng-model="newProject.id" disabled />
 
     <label>Name:</label>
-    <input type="text" name="project.name" value="{{ currentProject.data('name') }}" required/>
+    <input type="text" name="newProject.name" ng-model="newProject.name" />
 
     <label>Status:</label>
-    <input type="text" name="project.status" value="{{ currentProject.status() }}"/>
+    <input type="text" name="newProject.status" ng-model="newProject.status" disabled />
 
-    <label>Created:</label>
-    <input type="text" name="project.created" value="{{ currentProject.timestamp() }}"/>
+    <!-- <label>Created:</label>
+    <input type="text" name="newProject.created" ng-model="newProject.created" disabled /> -->
+
+    <label>Updated:</label>
+    <input type="text" name="newProject.updated" ng-model="newProject.updated" disabled />
 
     <label>Deltas:</label>
-    <input type="text" name="project.deltas" value="{{ currentProject.deltas().length() }}"/>
-	
-	<label>Description:</label>
-    <textarea name="project.description">{{ currentProject.description() }}</textarea>
+    <input type="text" name="newProject.deltas" ng-model="newProject.deltas" disabled />
 
-    <button class="save" ng:click="saveProject()">Save</button>
-    <button class="delete" ng:click="deleteProject(currentProject.id())">Delete</button>
+	<label>Description:</label>
+    <textarea name="newProject.description" ng-model="newProject.description" ></textarea>
+
+    <button class="update" ng:click="updateProject()">Update</button>
+    <button class="delete" ng:click="deleteProject(newProject.id)">Delete</button>
+
+</div>
+<div class="form-right-col">
+	<div class="row padded">
+		<div class="row">
+			GROUPS
+		  <table class="table table-striped">
+			<tr ng-repeat="group in groups" 
+				ui-sref='groups.group({groupID:group.id()})'>
+			  <td> {{ group.id() || group.data('name') }} </td>
+			</tr>
+		  </table>
+		</div>
+	</div>
+	<div class="row padded">
+		<div class="row">
+			ITEMS
+		  <table class="table table-striped">
+			<tr ng-repeat="item in items" 
+				ui-sref='items.item({itemID:item.id()})'>
+			  <td> {{ item.id() || item.data('name') }} </td>
+			</tr>
+		  </table>
+		</div>
+	</div>
+
 </div>
 
-<!-- <div class="form-right-col">
-    <img width="250" height="300" src="pics/{{ wine.picture }}" onerror="this.src='pics/generic.jpg'"/>
-    <label>Notes:</label>
-    <textarea name="wine.description">{{ wine.description }}</textarea>
-</div> -->
